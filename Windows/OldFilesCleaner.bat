@@ -22,8 +22,8 @@ set subdirpar= %subdirpar:"=%
 :: Execute the deletion command on files that match the search parameters
 forfiles -p %destfldr% %subdirpar% -m %filter% -d %retaindays% -c "cmd /c if @isdir==FALSE (del /F /Q @file)"
 
-:: If deleteempty is true remove the empty folders matching the same search parameters
-if %deleteempty%==TRUE (Forfiles -p %destfldr% %subdirpar% -d %retaindays% -c "cmd /c if @isdir==TRUE (rmdir /q @file)")
+:: If deleteempty is true remove the empty subfolders
+if %deleteempty%==TRUE (Forfiles -p %destfldr% %subdirpar% -c "cmd /c if @isdir==TRUE (rmdir /q @file)")
  
 :: work done
 echo "done"
