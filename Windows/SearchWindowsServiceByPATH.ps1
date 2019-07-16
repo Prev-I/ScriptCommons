@@ -1,0 +1,1 @@
+Get-WmiObject win32_service | ?{$_.PathName -like '*SEARCH_KEYWORD*'} | select Name, DisplayName, State, PathName
